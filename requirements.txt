@@ -1,0 +1,7 @@
+requests-html
+aioredis
+pyyaml
+click
+Jinja2
+aiohttp
+sender

@@ -1,0 +1,19 @@
+---
+tasks:
+  - name: A Page
+    url: http://example.com/page_1.html
+    css_selector: ".a-class"
+    first_only: True
+    interval: 5
+    actions:
+      - email:
+          email_to: recipient@domain.com
+    conditions:
+      - cond_type: text
+        cond: has
+        rule: some text
+    condition_logic: and
+redis: 127.0.0.1:6379
+mailgun:
+  domain: mail.domain.com
+  api_key: key-aaa111bbb222ccc333

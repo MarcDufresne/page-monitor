@@ -1,0 +1,9 @@
+[style]
+based_on_style = pep8
+split_before_logical_operator = false
+indent_dictionary_value = true
+
+split_before_named_assigns = False
+split_penalty_after_opening_bracket=300
+split_penalty_for_added_line_split=30
+use_tabs=False
