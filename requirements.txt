@@ -1,7 +1,7 @@
-requests-html
-aioredis
-pyyaml
-click
-Jinja2
-aiohttp
-sender
+requests-html<0.10
+aioredis<1.2
+pyyaml<4.0
+click<6.8
+Jinja2<2.11
+aiohttp<3.2
+sender<0.4

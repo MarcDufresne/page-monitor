@@ -1,5 +1,9 @@
 # Page Monitor
 
+_(If you are reading this on PyPI you can go on the
+[project's GitHub page](https://github.com/MarcDufresne/page-monitor)
+for a properly formatted version)_
+
 This is an app that monitors web pages for changes,
 with optional conditions, and is able to execute actions
 based on changes, like send an email or a Telegram message.
@@ -12,18 +16,32 @@ version.
 
 You will need **Python 3.6+** to run this app.
 
+An easy way to install Python 3.6 is to use 
+[pyenv](https://github.com/pyenv/pyenv)
+(with [pyenv-installer](https://github.com/pyenv/pyenv-installer))
+
+**Install with `pip`**
+
+1. In a Python 3.6+ environment, run `pip install page-monitor`
+2. Create a configuration file
+3. Run the app according to _Usage_ below
+
+**Clone locally**
+
 1. Clone this repo
 2. Create a configuration file
 3. Install the contents of `requirements.txt` into a Python 3.6+ environment
 4. Run the app according to _Usage_ below
 
-An easy way to install Python 3.6 is to use 
-[pyenv](https://github.com/pyenv/pyenv)
-(with [pyenv-installer](https://github.com/pyenv/pyenv-installer))
-
 ## Usage
 
-If cloned locally:
+**Installed with `pip`**
+
+```
+page_monitor <tasks_file>
+```
+
+**Cloned locally**
 
 ```
 python page_monitor/monitor.py <tasks_file>
