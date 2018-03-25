@@ -8,6 +8,19 @@ It will also **fully support JavaScript** rendering by using Chromium
 in the background once `requests-html` releases an Async compatible
 version.
 
+## Installation
+
+You will need **Python 3.6+** to run this app.
+
+1. Clone this repo
+2. Create a configuration file
+3. Install the contents of `requirements.txt` into a Python 3.6+ environment
+4. Run the app according to _Usage_ below
+
+An easy way to install Python 3.6 is to use 
+[pyenv](https://github.com/pyenv/pyenv)
+(with [pyenv-installer](https://github.com/pyenv/pyenv-installer))
+
 ## Usage
 
 If cloned locally:
