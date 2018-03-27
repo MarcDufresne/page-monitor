@@ -54,8 +54,11 @@ class Task:
 
     async def execute_task(self):
         logger.info(f'Executing task {self.name} with ID {self._id}')
-        await self._execute_task()
-        logger.info(f'Done processing task {self._id}')
+        try:
+            await self._execute_task()
+            logger.info(f'Done processing task {self._id}')
+        except Exception:
+            logging.exception(f'Error while processing task {self._id}')
 
     async def _execute_task(self):
         interval_passed = await self._interval_passed()
@@ -104,7 +107,8 @@ class Task:
         found_content = get_content(self.url, css_selector=self.css_selector,
                                     first_only=self.first_only,
                                     render=self.render)
-
+        if not found_content:
+            return ''
         return '\n'.join(content.text for content in found_content)
 
     def _diff_content(self, prev_content: str,
