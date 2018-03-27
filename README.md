@@ -6,6 +6,7 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/page-monitor.svg)
 ![PyPI - Status](https://img.shields.io/pypi/status/page-monitor.svg)
 ![GitHub issues](https://img.shields.io/github/issues/MarcDufresne/page-monitor.svg)
+![Read the Docs (version)](https://img.shields.io/readthedocs/page-monitor/latest.svg)
 
 
 _(If you are reading this on PyPI you can go on the
