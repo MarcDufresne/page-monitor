@@ -32,16 +32,13 @@ def run_monitor(tasks_file):
 
         actions = []
         for action in task['actions']:
-            if ActionEmail.ACTION_TYPE in action:
+            action_type = action['type']
+            params = action.get('params', {})
+            if action_type == ActionEmail.ACTION_TYPE:
+                actions.append(ActionEmail(params['email_to']))
+            elif action_type == ActionTelegram.ACTION_TYPE:
                 actions.append(
-                    ActionEmail(
-                        email_to=action[ActionEmail.ACTION_TYPE]['email_to']))
-            elif ActionTelegram.ACTION_TYPE in action:
-                actions.append(
-                    ActionTelegram(
-                        chat_id=str(
-                            action[ActionTelegram.ACTION_TYPE]['chat_id']),
-                        token=action[ActionTelegram.ACTION_TYPE]['token']))
+                    ActionTelegram(str(params['chat_id']), params['token']))
             else:
                 click.echo(
                     click.style(f"Unrecognized action type {action.keys()[0]}",
@@ -51,12 +48,12 @@ def run_monitor(tasks_file):
         conditions = []
         for condition in task.get('conditions', []):
             conditions.append(
-                Condition(condition['cond_type'], condition['cond'],
+                Condition(condition['type'], condition['cond'],
                           str(condition.get('rule', ''))))
 
         processed_tasks.append(
-            Task(task['url'], task['css_selector'], task['interval'], actions,
-                 conditions=conditions,
+            Task(task['url'], task['css_selector'], task.get('interval', 3600),
+                 actions, conditions=conditions,
                  first_only=task.get('first_only', False),
                  condition_logic=task.get('condition_logic'),
                  name=task.get('name'), render=task.get('render', False)))

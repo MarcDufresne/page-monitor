@@ -62,10 +62,11 @@ tasks:
     first_only: True
     interval: 60
     actions:
-      - email:
+      - type: email
+        params:
           email_to: recipient@domain.com
     conditions:
-      - cond_type: text
+      - type: text
         cond: has
         rule: "some text"
     condition_logic: and
@@ -87,8 +88,8 @@ options and default.
   - `css_selector` _(string)_ **Required**: Part of the page to monitor.
   - `first_only` _(boolean)_: If multiple elements match the `css_selector`.
        this will only process the first matched element. Defaults to: `False`.
-  - `interval` _(integer)_ **Required**: Interval in seconds for checks,
-       minimum of 5 seconds.
+  - `interval` _(integer)_: Interval in seconds for checks,
+       minimum of 5 seconds, defaults to 1 hour (3600 seconds).
   - `render` _(bool)_: Whether to use Chromium to render JavaScript or not,
        defaults to `False`.
   - `actions` _(list)_: List of actions, see below for details.
@@ -136,10 +137,13 @@ action.
 
 It should look like this:
 ```yaml
-action_type:
+type: action
+params:
   param_1: value
   param_2: value
 ```
+
+**Supported Actions**
 
 - `email`: Send an email with content diff when content has changed
      and conditions are met.
@@ -154,7 +158,7 @@ action_type:
 
 Each condition has 3 attributes:
 
-- `cond_type` **Required**: Defines what will be evaluated, should be one of the following:
+- `type` **Required**: Defines what will be evaluated, should be one of the following:
   - `text`: Check will be made on full current content.
   - `added_text`: Check will be made only on added text.
   - `removed_text`: Check will be made only on text that was removed.
