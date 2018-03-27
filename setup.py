@@ -8,7 +8,7 @@ def read(filename):
 
 setup(
     name="page-monitor",
-    version="0.2",
+    version="0.3b3",
     author="MarcDufresne",
     author_email="marc.andre.dufresne@gmail.com",
     description="Simple Python based Page monitoring with "
@@ -35,6 +35,9 @@ setup(
     include_package_data=True,
     zip_safe=True,
     install_requires=read("requirements.txt"),
+    extras_require={
+        'linux-desktop': read('requirements-linux-desktop.txt')
+    },
     entry_points={
         "console_scripts": [
             "page_monitor = page_monitor.monitor:run_monitor"

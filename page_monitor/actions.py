@@ -102,3 +102,27 @@ class ActionTelegram(Action):
     def send_telegram_message(self, url: str, content: str = None):
         print(f"Would send telegram message to {self.chat_id} for "
               f"url {url}")
+
+
+class ActionDesktopNotification(Action):
+    ACTION_TYPE = 'desktop_notification'
+
+    def send_desktop_notification(self, url: str, name: str):
+        try:
+            from gi.repository import Notify
+        except ImportError:
+            Notify = None
+
+        if Notify:
+            self._send_linux_notification(url, name)
+
+    def _send_linux_notification(self, url: str, name: str):
+        # noinspection PyUnresolvedReferences
+        from gi.repository import Notify
+
+        Notify.init("page-monitor")
+
+        notification = Notify.Notification.new(
+            name, f"Change detected on page!\n{url}")
+
+        notification.show()

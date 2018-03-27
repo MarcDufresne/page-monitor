@@ -1,3 +1,4 @@
 include page_monitor/templates/*.html
 include requirements.txt
+include requirements-linux-desktop.txt
 include LICENSE

@@ -146,6 +146,8 @@ action_type:
   - `email_to` _(string)_ **Required**: Recipient of the notification email.
 - `telegram` **Not yet available**: Send a Telegram message when changes
      are detected and conditions are met.
+- `desktop_notification`: Shows a desktop notification, works on Linux,
+     macOS and Windows 10. See details below for requirements on each system.
 
 #### Conditions
 
@@ -165,3 +167,17 @@ Each condition has 3 attributes:
      string if using `has` or `does_not_have`, or a valid Python regex if
      using `matches_regex` (You can use [Regex 101](https://regex101.com/)
      for help with that).
+
+### Notes for Desktop Notifications
+
+#### Ubuntu
+
+Install the following
+```
+sudo apt-get install libcairo2-dev libgirepository1.0-dev
+```
+
+And then use the `linux_desktop` extra for `page-monitor`, like so:
+```yaml
+pip install page-monitor[linux-desktop]`
+```
