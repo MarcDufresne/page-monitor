@@ -32,7 +32,7 @@ An easy way to install Python 3.6 is to use
 `pyenv <https://github.com/pyenv/pyenv>`_
 (with `pyenv-installer <https://github.com/pyenv/pyenv-installer>`_)
 
-**Install with ``pip``**
+**Install with pip**
 
 1. In a Python 3.6+ environment, run ``pip install page-monitor``
 2. Create a configuration file, see `Configuration`_
