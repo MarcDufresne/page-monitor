@@ -41,8 +41,8 @@ def run_monitor(tasks_file):
                     ActionTelegram(str(params['chat_id']), params['token']))
             else:
                 click.echo(
-                    click.style(f"Unrecognized action type {action.keys()[0]}",
-                                fg='orange'))
+                    click.style(f"Unrecognized action type {action_type}",
+                                fg='yellow'))
 
         # Process conditions here
         conditions = []
