@@ -113,10 +113,19 @@ class ActionDesktopNotification(Action):
         except ImportError:
             Notify = None
 
+        try:
+            import win10toast
+        except ImportError:
+            win10toast = None
+
         if Notify:
             self._send_linux_notification(url, name)
 
-    def _send_linux_notification(self, url: str, name: str):
+        if win10toast:
+            self._send_windows_notification(url, name)
+
+    @staticmethod
+    def _send_linux_notification(url: str, name: str):
         # noinspection PyUnresolvedReferences
         from gi.repository import Notify
 
@@ -126,3 +135,14 @@ class ActionDesktopNotification(Action):
             name, f"Change detected on page!\n{url}")
 
         notification.show()
+
+    @staticmethod
+    def _send_windows_notification(url: str, name: str):
+        # noinspection PyUnresolvedReferences
+        import win10toast
+
+        toaster = win10toast.ToastNotifier()
+        toaster.show_toast(
+            title=name,
+            msg=f"Change detected on page!\n{url}"
+        )
