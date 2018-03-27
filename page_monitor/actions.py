@@ -4,6 +4,7 @@ from abc import ABCMeta
 import aiohttp
 import jinja2
 import sender
+import telepot
 from jinja2 import PackageLoader
 
 from page_monitor import config
@@ -96,9 +97,12 @@ class ActionEmail(Action):
 class ActionTelegram(Action):
     ACTION_TYPE = 'telegram'
 
-    def __init__(self, chat_id: str):
+    def __init__(self, chat_id: str, token: str):
         self.chat_id = chat_id
+        self._bot = telepot.Bot(token)
 
-    def send_telegram_message(self, url: str, content: str = None):
-        print(f"Would send telegram message to {self.chat_id} for "
-              f"url {url}")
+    def send_telegram_message(self, url: str, name: str, diff: str):
+        content = (f'Content change detected on [{name}]({url})\n\n'
+                   f'```\n{diff}```\n\n[{url}]({url})')
+        self._bot.sendMessage(self.chat_id, content, parse_mode='Markdown')
+        logger.info(f"Sent Telegram message to chat {self.chat_id}")

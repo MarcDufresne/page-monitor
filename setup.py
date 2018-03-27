@@ -8,7 +8,7 @@ def read(filename):
 
 setup(
     name="page-monitor",
-    version="0.2",
+    version="0.3",
     author="MarcDufresne",
     author_email="marc.andre.dufresne@gmail.com",
     description="Simple Python based Page monitoring with "

@@ -5,3 +5,4 @@ click<6.8
 Jinja2<2.11
 aiohttp<3.2
 sender<0.4
+telepot<13

@@ -152,4 +152,4 @@ class Task:
             if isinstance(action, ActionEmail):
                 await action.send_email(self.url, self.name, diff)
             elif isinstance(action, ActionTelegram):
-                action.send_telegram_message(self.url)
+                action.send_telegram_message(self.url, self.name, diff)

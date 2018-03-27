@@ -144,8 +144,11 @@ action_type:
 - `email`: Send an email with content diff when content has changed
      and conditions are met.
   - `email_to` _(string)_ **Required**: Recipient of the notification email.
-- `telegram` **Not yet available**: Send a Telegram message when changes
-     are detected and conditions are met.
+- `telegram`: Send a Telegram message when changes are detected and
+     conditions are met.
+  - `chat_id` _(string)_ **Required**: ID of the chat messages should be sent to.
+  - `token` _(string)_ **Required**: Your Telegram bot token, see
+       [Telegram Docs](https://core.telegram.org/bots#6-botfather) for details.
 
 #### Conditions
 
